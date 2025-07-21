@@ -13,15 +13,16 @@
       height: 100vh;
       background: #f7f8fa;
       color: #333;
+      background: url('https://github.com/sharmahemant03/mermaid-visualizer/blob/main/Background.png?raw=true') center/cover no-repeat;
     }
 
     .container {
       background: #fff;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       border-radius: 12px;
-      padding: 20px;
-      max-width: 95%;
-      width: 900px;
+      padding: 15px; /* Minimized padding */
+      max-width: 80%; /* Smaller width */
+      width: 700px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -29,27 +30,34 @@
     }
 
     .title {
-      font-size: 1.5rem;
+      font-size: 1.3rem; /* Reduced title size */
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: center;
-      color: #0078d7;
+      color: #212529;
     }
 
-    /* Scrollable and responsive diagram container */
+    /* Background image behind diagram */
     .diagram-container {
       width: 100%;
-      height: 70vh;
+      height: 60vh; /* Reduced height */
       overflow: auto;
       text-align: center;
-      padding: 10px;
+      padding: 8px;
       border: 1px solid #ddd;
       border-radius: 8px;
-      background: #fafafa;
       position: relative;
     }
 
-    /* Limit diagram width for better visualization */
+    /* Transparent background for the SVG diagram */
+    .mermaid {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      padding: 10px;
+      display: inline-block;
+    }
+
+    /* Limit diagram width */
     .mermaid svg {
       max-width: 100%;
       height: auto;
@@ -57,25 +65,25 @@
 
     /* Download button */
     #downloadBtn {
-      margin-top: 15px;
-      padding: 8px 16px;
+      margin-top: 10px;
+      padding: 6px 14px;
       border: none;
-      background: #0078d7;
+      background: #83D600;
       color: #fff;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.95rem;
       transition: background 0.3s ease;
     }
 
     #downloadBtn:hover {
-      background: #005a9e;
+      background: #5E9700;
     }
 
     footer {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #666;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #212529;
     }
   </style>
   <script type="module">
@@ -86,7 +94,6 @@
     function renderDiagram() {
       const params = new URLSearchParams(window.location.search);
 
-      // Default Mermaid code
       const defaultCode = `
       graph TD
         A[Start] --> B{Is it complex?}
